@@ -18,19 +18,29 @@ const ExpenseForm = () => {
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
 		setNewTitle( newExpense.title );
-		console.log( newExpense );
+		// console.log( newExpense );
 	}
 	,onChangeAmount = event => {
 		newExpense.amount = event.target.value;
 		setNewAmount( newExpense.amount );
-		console.log( newExpense );
+		// console.log( newExpense );
 	}
 	,onChangeDate = event => {
 		newExpense.date = event.target.value;
 		setNewDate( newExpense.date );
-		console.log( newExpense );
+		// console.log( newExpense );
 	}
 	;
+
+	const onSubmit = event => {
+		event.preventDefault();
+		const newExp = {
+			title: newTitle
+			,amount: newAmount
+			,date: new Date(newDate)
+		}
+		console.log("New expense:", newExp );
+	}
 
 	// const [newExp, setNewExp] = useState({
 	// 	title: ""
@@ -84,8 +94,11 @@ const ExpenseForm = () => {
 	// }
 
 
+
+
+
 	return (
-		<form>
+		<form onSubmit={onSubmit} >
 			<div className="new-expense__controls">
 				<div>Title: {newTitle}</div>
 				<div>Amount: {newAmount}</div>
