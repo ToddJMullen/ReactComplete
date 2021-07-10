@@ -1,4 +1,5 @@
 import ExpenseList from './components/expenses/ExpenseList';
+import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
   function rand(upperBound){
@@ -26,6 +27,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
+      <NewExpense />
       <ExpenseList className="expense-list" expenseAry={expAry} />
     </div>
   );
