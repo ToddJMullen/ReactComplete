@@ -1,10 +1,10 @@
 
 
 import { useState } from 'react';
-import ExpenseItem from '../expenses/ExpenseItem';
+// import ExpenseItem from '../expenses/ExpenseItem';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
 	let newExpense = {
 		title: ""
@@ -40,6 +40,8 @@ const ExpenseForm = () => {
 			,date: new Date(newDate)
 		}
 		console.log("New expense:", newExp );
+		props.onAdd( newExp );
+
 		setNewTitle("");
 		setNewAmount("");
 		setNewDate("");
@@ -103,13 +105,15 @@ const ExpenseForm = () => {
 	return (
 		<form onSubmit={onSubmit} >
 			<div className="new-expense__controls">
-				<div>Title: {newTitle}</div>
-				<div>Amount: {newAmount}</div>
-				<div>Date: {newDate}</div>
+				<div>
+					<div>Title: {newTitle}</div>
+					<div>Amount: {newAmount}</div>
+					<div>Date: {newDate}</div>
+				</div>
+				<br />
 				{/* <div>Title: {newExp.title}</div>
 				<div>Amount: {newExp.amount}</div>
 				<div>Date: {newExp.date}</div> */}
-				<ExpenseItem data={newExpense} />
 				<div className="new-expense__control">
 					<label>Title</label>
 					<input value={newTitle}
