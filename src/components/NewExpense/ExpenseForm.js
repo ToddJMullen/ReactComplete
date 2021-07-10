@@ -12,87 +12,87 @@ const ExpenseForm = () => {
 		,date: null
 	}
 
-	// const [newTitle, setNewTitle]	= useState('')
-	// ,[newAmount, setNewAmount] = useState("")
-	// ,[newDate, setNewDate] = useState("")
-	// ,onChangeTitle = event => {
-	// 	newExpense.title = event.target.value;
-	// 	setNewTitle( newExpense.title );
-	// 	console.log( newExpense );
-	// }
-	// ,onChangeAmount = event => {
-	// 	newExpense.amount = event.target.value;
-	// 	setNewAmount( newExpense.amount );
-	// 	console.log( newExpense );
-	// }
-	// ,onChangeDate = event => {
-	// 	newExpense.date = event.target.value;
-	// 	setNewDate( newExpense.date );
-	// 	console.log( newExpense );
-	// }
-	// ;
-
-	const [newExp, setNewExp] = useState({
-		title: ""
-		,amount: ""
-		,date: null
-	})
+	const [newTitle, setNewTitle]	= useState('')
+	,[newAmount, setNewAmount] = useState("")
+	,[newDate, setNewDate] = useState("")
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
-		// using this form is potentially a problem bc if many updates are performed it is possible that the expanded newExp item will
-		// not be the latest data & it could potentially overwrite/lose some changes
-		// setNewExp({
-		// 	...newExp// bad practice
-		// 	,title: newExpense.title
-		// })
-			// Alternate/safe way to use single state & guarantee the data is the latest
-			setNewExp( prevState => {
-				return {// we return the updated data to the callstack to be used in the next scheduled op
-					...prevState// previous state object that has the result of all previously scheduled updates
-					,title: newExpense.title
-				}
-			})
-		// console.log( newExpense );
+		setNewTitle( newExpense.title );
+		console.log( newExpense );
 	}
 	,onChangeAmount = event => {
 		newExpense.amount = event.target.value;
-		// setNewExp({
-		// 	...newExp// bad practice
-		// 	,amount: newExpense.amount
-		// })
-			setNewExp( prevState => {
-				return {// we return the updated data to the callstack to be used in the next scheduled op
-					...prevState// previous state object that has the result of all previously scheduled updates
-					,amount: newExpense.amount
-				}
-			})
-			// console.log( newExpense );
-		}
-		,onChangeDate = event => {
-			newExpense.date = event.target.value;
-			// setNewExp({
-				// 	...newExp// bad practice
-				// 	,date: newExpense.date
-				// })
-				setNewExp( prevState => {
-				return {// we return the updated data to the callstack to be used in the next scheduled op
-					...prevState// previous state object that has the result of all previously scheduled updates
-					,date: newExpense.date
-				}
-			})
-		// console.log( newExpense );
+		setNewAmount( newExpense.amount );
+		console.log( newExpense );
 	}
+	,onChangeDate = event => {
+		newExpense.date = event.target.value;
+		setNewDate( newExpense.date );
+		console.log( newExpense );
+	}
+	;
+
+	// const [newExp, setNewExp] = useState({
+	// 	title: ""
+	// 	,amount: ""
+	// 	,date: null
+	// })
+	// ,onChangeTitle = event => {
+	// 	newExpense.title = event.target.value;
+	// 	// using this form is potentially a problem bc if many updates are performed it is possible that the expanded newExp item will
+	// 	// not be the latest data & it could potentially overwrite/lose some changes
+	// 	// setNewExp({
+	// 	// 	...newExp// bad practice
+	// 	// 	,title: newExpense.title
+	// 	// })
+	// 		// Alternate/safe way to use single state & guarantee the data is the latest
+	// 		setNewExp( prevState => {
+	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
+	// 				...prevState// previous state object that has the result of all previously scheduled updates
+	// 				,title: newExpense.title
+	// 			}
+	// 		})
+	// 	// console.log( newExpense );
+	// }
+	// ,onChangeAmount = event => {
+	// 	newExpense.amount = event.target.value;
+	// 	// setNewExp({
+	// 	// 	...newExp// bad practice
+	// 	// 	,amount: newExpense.amount
+	// 	// })
+	// 		setNewExp( prevState => {
+	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
+	// 				...prevState// previous state object that has the result of all previously scheduled updates
+	// 				,amount: newExpense.amount
+	// 			}
+	// 		})
+	// 		// console.log( newExpense );
+	// 	}
+	// 	,onChangeDate = event => {
+	// 		newExpense.date = event.target.value;
+	// 		// setNewExp({
+	// 			// 	...newExp// bad practice
+	// 			// 	,date: newExpense.date
+	// 			// })
+	// 			setNewExp( prevState => {
+	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
+	// 				...prevState// previous state object that has the result of all previously scheduled updates
+	// 				,date: newExpense.date
+	// 			}
+	// 		})
+	// 	// console.log( newExpense );
+	// }
 
 
 	return (
 		<form>
 			<div className="new-expense__controls">
-				{/* <div>Title: {newTitle}</div>
+				<div>Title: {newTitle}</div>
 				<div>Amount: {newAmount}</div>
-				<div>Date: {newDate}</div> */}
-				<div>Title: {newExp.title}</div>
+				<div>Date: {newDate}</div>
+				{/* <div>Title: {newExp.title}</div>
 				<div>Amount: {newExp.amount}</div>
-				<div>Date: {newExp.date}</div>
+				<div>Date: {newExp.date}</div> */}
 				<ExpenseItem data={newExpense} />
 				<div className="new-expense__control">
 					<label>Title</label>
