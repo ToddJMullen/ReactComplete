@@ -40,7 +40,7 @@ const ExpenseForm = () => {
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
 		setNewExp({
-			...newExp
+			...newExp// bad practice
 			,title: newExpense.title
 		})
 		// console.log( newExpense );
@@ -48,7 +48,7 @@ const ExpenseForm = () => {
 	,onChangeAmount = event => {
 		newExpense.amount = event.target.value;
 		setNewExp({
-			...newExp
+			...newExp// bad practice
 			,amount: newExpense.amount
 		})
 		// console.log( newExpense );
@@ -56,7 +56,7 @@ const ExpenseForm = () => {
 	,onChangeDate = event => {
 		newExpense.date = event.target.value;
 		setNewExp({
-			...newExp
+			...newExp// bad practice
 			,date: newExpense.date
 		})
 		// console.log( newExpense );
