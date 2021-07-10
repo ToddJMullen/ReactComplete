@@ -40,6 +40,9 @@ const ExpenseForm = () => {
 			,date: new Date(newDate)
 		}
 		console.log("New expense:", newExp );
+		setNewTitle("");
+		setNewAmount("");
+		setNewDate("");
 	}
 
 	// const [newExp, setNewExp] = useState({
@@ -109,15 +112,18 @@ const ExpenseForm = () => {
 				<ExpenseItem data={newExpense} />
 				<div className="new-expense__control">
 					<label>Title</label>
-					<input onChange={onChangeTitle} type="text" />
+					<input value={newTitle}
+								 onChange={onChangeTitle} type="text" />
 				</div>
 				<div className="new-expense__control">
 					<label>Amount</label>
-					<input onChange={onChangeAmount} type="number" min="0,01" step="0,01" />
+					<input value={newAmount}
+								 onChange={onChangeAmount} type="number" min="0,01" step="0,01" />
 				</div>
 				<div className="new-expense__control">
 					<label>Date</label>
-					<input onChange={onChangeDate} type="date" min="2018-01-01" max="2022-12-31" />
+					<input value={newDate}
+								 onChange={onChangeDate} type="date" min="2018-01-01" max="2022-12-31" />
 				</div>
 			</div>
 			<div className="new-expense__actions">
