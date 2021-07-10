@@ -39,26 +39,47 @@ const ExpenseForm = () => {
 	})
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
-		setNewExp({
-			...newExp// bad practice
-			,title: newExpense.title
-		})
+		// using this form is potentially a problem bc if many updates are performed it is possible that the expanded newExp item will
+		// not be the latest data & it could potentially overwrite/lose some changes
+		// setNewExp({
+		// 	...newExp// bad practice
+		// 	,title: newExpense.title
+		// })
+			// Alternate/safe way to use single state & guarantee the data is the latest
+			setNewExp( prevState => {
+				return {// we return the updated data to the callstack to be used in the next scheduled op
+					...prevState// previous state object that has the result of all previously scheduled updates
+					,title: newExpense.title
+				}
+			})
 		// console.log( newExpense );
 	}
 	,onChangeAmount = event => {
 		newExpense.amount = event.target.value;
-		setNewExp({
-			...newExp// bad practice
-			,amount: newExpense.amount
-		})
-		// console.log( newExpense );
-	}
-	,onChangeDate = event => {
-		newExpense.date = event.target.value;
-		setNewExp({
-			...newExp// bad practice
-			,date: newExpense.date
-		})
+		// setNewExp({
+		// 	...newExp// bad practice
+		// 	,amount: newExpense.amount
+		// })
+			setNewExp( prevState => {
+				return {// we return the updated data to the callstack to be used in the next scheduled op
+					...prevState// previous state object that has the result of all previously scheduled updates
+					,amount: newExpense.amount
+				}
+			})
+			// console.log( newExpense );
+		}
+		,onChangeDate = event => {
+			newExpense.date = event.target.value;
+			// setNewExp({
+				// 	...newExp// bad practice
+				// 	,date: newExpense.date
+				// })
+				setNewExp( prevState => {
+				return {// we return the updated data to the callstack to be used in the next scheduled op
+					...prevState// previous state object that has the result of all previously scheduled updates
+					,date: newExpense.date
+				}
+			})
 		// console.log( newExpense );
 	}
 
