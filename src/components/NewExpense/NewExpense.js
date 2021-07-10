@@ -1,23 +1,24 @@
 import React from 'react';
-import ExpenseItem from '../expenses/ExpenseItem';
+// import ExpenseItem from '../expenses/ExpenseItem';
 
 import ExpenseForm from "./ExpenseForm";
 
 import './NewExpense.css';
 
 
-const NewExpense = () => {
+const NewExpense = props => {
 
 	let newExpense = {};
 
 	const onAdd = newExp => {
 		newExpense = newExp;
 		console.log(newExpense);
+		props.onAddExpense(newExpense);
 	}
 
 	return  (
 	<div className="new-expense">
-		<ExpenseItem data={newExpense} />
+		{/* <ExpenseItem data={newExpense} /> */}
 		<ExpenseForm onAdd={onAdd} />
 	</div>
 	)

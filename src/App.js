@@ -1,3 +1,5 @@
+// import { useState } from 'react';
+// import ExpensesFilter from './components/expenses/ExpenseFilter';
 import ExpenseList from './components/expenses/ExpenseList';
 import NewExpense from './components/NewExpense/NewExpense';
 
@@ -22,13 +24,21 @@ function App() {
     ,{id: "e3", title: 'Burritos', price: price(), date: date()}
     ,{id: "e4", title: 'Steak', price: price(), date: date()}
     ,{id: "e5", title: 'Jalapenos', price: price(), date: date()}
-  ];
+  ]
+  ;
+
+  const onAddExpense = newExp => {
+    console.log("New exp:", newExp );
+  }
+  ;
+
 
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense />
-      <ExpenseList className="expense-list" expenseAry={expAry} />
+      <NewExpense onAddExpense={onAddExpense} />
+      <ExpenseList className="expense-list" 
+          expenseAry={expAry} />
     </div>
   );
 }

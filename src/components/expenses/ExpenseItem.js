@@ -6,7 +6,7 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../ui/Card';
 
 function ExpenseItem(props){
-    console.log(props.data);
+    // console.log(props.data);
 
     // create state for title & extract into local const for use in the jsx template (also cannot be assigned to [that is wrong use])
     // Also extract/name the matching setter for it (which we also don't want to overwrite)
