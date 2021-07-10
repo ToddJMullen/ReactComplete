@@ -10,19 +10,21 @@ function ExpenseList(props){
 	console.log("ExpenseList/ Props:", props );
 
 	const DEFAULT_FILTER_YEAR = (new Date()).getFullYear()
-  ,expAry = props.expenseAry
   ,[filterYear, setFilterYear] = useState( DEFAULT_FILTER_YEAR )
   ,onFilterYear = year => {
-    console.log("onFilterYear/", year );
-    setFilterYear( year );
+		setFilterYear( year );
   }
-	;
+	,filteredExpAry = props.expenseAry.filter( exp => {
+		// console.log("onFilterYear/", exp.date.getFullYear(), year);//debug string/int mismatch
+		return exp.date.getFullYear() === filterYear
+	} );
+	
 
 
-	return (// don't know how to iterate yet
+	return (
 	<Card className="expense-list">
 		<ExpensesFilter filterYear={filterYear} onFilterYear={onFilterYear} />
-		{expAry.map( exp => <ExpenseItem data={exp} /> )}
+		{filteredExpAry.map( exp => <ExpenseItem key={exp.id} data={exp} /> )}
 		</Card>
 	)
 }
