@@ -17,14 +17,32 @@ function App() {
     // console.log( y,m,d );
     return new Date(y, m, d);
   }
+  function title(){
+    return ["Lettuce", "Tabasco","Burritos","Steak","Jalapenos"][rand(5)]
+  }
+  function generateExpenses(){
+    let n = rand(25)
+    ,ary = []
+    ;
+    for (let i = 0; i < n; i++) {
+      ary.push({
+        id: `e${i}`
+        ,title: title()
+        ,price: price()
+        ,date: date()
+      });
+    }// for(n)
+    return ary;
+  }
 
-  const expAry = [
-    {id: "e1", title: 'Lettuce', price: price(), date: date()}
-    ,{id: "e2", title: 'Tabasco', price: price(), date: date()}
-    ,{id: "e3", title: 'Burritos', price: price(), date: date()}
-    ,{id: "e4", title: 'Steak', price: price(), date: date()}
-    ,{id: "e5", title: 'Jalapenos', price: price(), date: date()}
-  ]
+  const expAry = generateExpenses()
+  // [
+  //   {id: "e1", title: 'Lettuce', price: price(), date: date()}
+  //   ,{id: "e2", title: 'Tabasco', price: price(), date: date()}
+  //   ,{id: "e3", title: 'Burritos', price: price(), date: date()}
+  //   ,{id: "e4", title: 'Steak', price: price(), date: date()}
+  //   ,{id: "e5", title: 'Jalapenos', price: price(), date: date()}
+  // ]
   ;
 
   const onAddExpense = newExp => {
@@ -37,8 +55,7 @@ function App() {
     <div>
       <h2>Let's get started!</h2>
       <NewExpense onAddExpense={onAddExpense} />
-      <ExpenseList className="expense-list" 
-          expenseAry={expAry} />
+      <ExpenseList className="expense-list" expenseAry={expAry} />
     </div>
   );
 }
