@@ -19,10 +19,10 @@ function date(){
   return date;
 }
 function title(){
-  return ["Lettuce", "Tabasco","Burritos","Steak","Jalapenos"][rand(5)]
+  return ["Lettuce", "Tabasco","Burritos","Steak","Jalapenos"][rand(0,5)]
 }
 function generateExpenses(){
-  let n = rand(1,3)
+  let n = rand(1,11)
   ,ary = []
   ;
   for (let i = 0; i < n; i++) {
