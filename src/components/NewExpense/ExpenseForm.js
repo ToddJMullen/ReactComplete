@@ -21,7 +21,7 @@ const ExpenseForm = (props) => {
 		// console.log( newExpense );
 	}
 	,onChangeAmount = event => {
-		newExpense.amount = event.target.value;
+		newExpense.amount = +event.target.value;
 		setNewAmount( newExpense.amount );
 		// console.log( newExpense );
 	}
