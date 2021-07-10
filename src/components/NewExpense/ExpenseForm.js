@@ -12,33 +12,66 @@ const ExpenseForm = () => {
 		,date: null
 	}
 
-	const [newTitle, setNewTitle]	= useState('')
-	,[newAmount, setNewAmount] = useState("")
-	,[newDate, setNewDate] = useState("")
+	// const [newTitle, setNewTitle]	= useState('')
+	// ,[newAmount, setNewAmount] = useState("")
+	// ,[newDate, setNewDate] = useState("")
+	// ,onChangeTitle = event => {
+	// 	newExpense.title = event.target.value;
+	// 	setNewTitle( newExpense.title );
+	// 	console.log( newExpense );
+	// }
+	// ,onChangeAmount = event => {
+	// 	newExpense.amount = event.target.value;
+	// 	setNewAmount( newExpense.amount );
+	// 	console.log( newExpense );
+	// }
+	// ,onChangeDate = event => {
+	// 	newExpense.date = event.target.value;
+	// 	setNewDate( newExpense.date );
+	// 	console.log( newExpense );
+	// }
+	// ;
+
+	const [newExp, setNewExp] = useState({
+		title: ""
+		,amount: ""
+		,date: null
+	})
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
-		setNewTitle( newExpense.title );
-		console.log( newExpense );
+		setNewExp({
+			...newExp
+			,title: newExpense.title
+		})
+		// console.log( newExpense );
 	}
 	,onChangeAmount = event => {
 		newExpense.amount = event.target.value;
-		setNewAmount( newExpense.amount );
-		console.log( newExpense );
+		setNewExp({
+			...newExp
+			,amount: newExpense.amount
+		})
+		// console.log( newExpense );
 	}
 	,onChangeDate = event => {
 		newExpense.date = event.target.value;
-		setNewDate( newExpense.date );
-		console.log( newExpense );
+		setNewExp({
+			...newExp
+			,date: newExpense.date
+		})
+		// console.log( newExpense );
 	}
-	;
 
 
 	return (
 		<form>
 			<div className="new-expense__controls">
-				<div>Title: {newTitle}</div>
+				{/* <div>Title: {newTitle}</div>
 				<div>Amount: {newAmount}</div>
-				<div>Date: {newDate}</div>
+				<div>Date: {newDate}</div> */}
+				<div>Title: {newExp.title}</div>
+				<div>Amount: {newExp.amount}</div>
+				<div>Date: {newExp.date}</div>
 				<ExpenseItem data={newExpense} />
 				<div className="new-expense__control">
 					<label>Title</label>
