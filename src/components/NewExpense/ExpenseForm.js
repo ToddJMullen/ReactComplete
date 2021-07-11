@@ -6,15 +6,18 @@ import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
 
+
 	let newExpense = {
 		title: ""
 		,amount: ""
 		,date: null
 	}
+	;
 
 	const [newTitle, setNewTitle]	= useState('')
-	,[newAmount, setNewAmount] = useState("")
-	,[newDate, setNewDate] = useState("")
+	,[newAmount, setNewAmount]		= useState("")
+	,[newDate, setNewDate]				= useState("")
+	,[addingItem, showForm]				= useState(false)
 	,onChangeTitle = event => {
 		newExpense.title = event.target.value;
 		setNewTitle( newExpense.title );
@@ -30,9 +33,7 @@ const ExpenseForm = (props) => {
 		setNewDate( newExpense.date );
 		// console.log( newExpense );
 	}
-	;
-
-	const onSubmit = event => {
+	,onSubmit = event => {
 		event.preventDefault();
 		const newExp = {
 			title: newTitle
@@ -41,79 +42,26 @@ const ExpenseForm = (props) => {
 		}
 		console.log("New expense:", newExp );
 		props.onAdd( newExp );
-
+		closeForm();
 		setNewTitle("");
 		setNewAmount("");
 		setNewDate("");
 	}
+	,openForm = () => {
+		showForm( true );
+	}
+	,closeForm = () => {
+		showForm( false );
+	}
+	;
 
-	// const [newExp, setNewExp] = useState({
-	// 	title: ""
-	// 	,amount: ""
-	// 	,date: null
-	// })
-	// ,onChangeTitle = event => {
-	// 	newExpense.title = event.target.value;
-	// 	// using this form is potentially a problem bc if many updates are performed it is possible that the expanded newExp item will
-	// 	// not be the latest data & it could potentially overwrite/lose some changes
-	// 	// setNewExp({
-	// 	// 	...newExp// bad practice
-	// 	// 	,title: newExpense.title
-	// 	// })
-	// 		// Alternate/safe way to use single state & guarantee the data is the latest
-	// 		setNewExp( prevState => {
-	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
-	// 				...prevState// previous state object that has the result of all previously scheduled updates
-	// 				,title: newExpense.title
-	// 			}
-	// 		})
-	// 	// console.log( newExpense );
-	// }
-	// ,onChangeAmount = event => {
-	// 	newExpense.amount = event.target.value;
-	// 	// setNewExp({
-	// 	// 	...newExp// bad practice
-	// 	// 	,amount: newExpense.amount
-	// 	// })
-	// 		setNewExp( prevState => {
-	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
-	// 				...prevState// previous state object that has the result of all previously scheduled updates
-	// 				,amount: newExpense.amount
-	// 			}
-	// 		})
-	// 		// console.log( newExpense );
-	// 	}
-	// 	,onChangeDate = event => {
-	// 		newExpense.date = event.target.value;
-	// 		// setNewExp({
-	// 			// 	...newExp// bad practice
-	// 			// 	,date: newExpense.date
-	// 			// })
-	// 			setNewExp( prevState => {
-	// 			return {// we return the updated data to the callstack to be used in the next scheduled op
-	// 				...prevState// previous state object that has the result of all previously scheduled updates
-	// 				,date: newExpense.date
-	// 			}
-	// 		})
-	// 	// console.log( newExpense );
-	// }
-
-
-
-
+	if( !addingItem ){
+		return <div><button onClick={openForm}>Add Item</button></div>
+	}
 
 	return (
 		<form onSubmit={onSubmit} >
 			<div className="new-expense__controls">
-				<div>
-					<div>Title: {newTitle}</div>
-					<div>Amount: {newAmount}</div>
-					<div>Date: {newDate}</div>
-				</div>
-				<br />
-				{/* <div>Title: {newExp.title}</div>
-				<div>Amount: {newExp.amount}</div>
-				<div>Date: {newExp.date}</div> */}
 				<div className="new-expense__control">
 					<label>Title</label>
 					<input value={newTitle}
@@ -131,6 +79,7 @@ const ExpenseForm = (props) => {
 				</div>
 			</div>
 			<div className="new-expense__actions">
+				<button type="reset" onClick={closeForm}>Cancel</button>
 				<button type="submit">Add Expense</button>
 			</div>
 		</form>

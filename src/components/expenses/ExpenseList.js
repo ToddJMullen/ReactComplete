@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Card from '../ui/Card';
 import ExpensesFilter from './ExpenseFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 
 function ExpenseList(props){
@@ -20,12 +21,13 @@ function ExpenseList(props){
 	,filteredExpAry = props.expenseAry.filter( exp => {
 		// console.log("onFilterYear/", exp.date.getFullYear(), filterYear);
 		return exp.date.getFullYear() === filterYear
-	} )
+	})
 	;
 	
 	return (
 	<Card className="expense-list">
 		<ExpensesFilter filterYear={filterYear} onFilterYear={onFilterYear} />
+		<ExpensesChart expenseAry={filteredExpAry} />
 		<ExpensesList expenseAry={filteredExpAry} total={total} />
 	</Card>
 	)
