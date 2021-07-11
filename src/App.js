@@ -22,7 +22,7 @@ function title(){
   return ["Lettuce", "Tabasco","Burritos","Steak","Jalapenos"][rand(0,5)]
 }
 function generateExpenses(){
-  let n = rand(1,11)
+  let n = rand(5,11)
   ,ary = []
   ;
   for (let i = 0; i < n; i++) {
