@@ -19,13 +19,17 @@ function ExpenseList(props){
 		return exp.date.getFullYear() === filterYear
 	} );
 	
+	let itemList = <p>No Matching Items</p>;
+	if( filteredExpAry.length > 0 ){
+		itemList = filteredExpAry.map( exp => <ExpenseItem key={exp.id} data={exp} /> )
+	}
 
 
 	return (
 	<Card className="expense-list">
 		<ExpensesFilter filterYear={filterYear} onFilterYear={onFilterYear} />
-		{filteredExpAry.map( exp => <ExpenseItem key={exp.id} data={exp} /> )}
-		</Card>
+		{itemList}
+	</Card>
 	)
 }
 
