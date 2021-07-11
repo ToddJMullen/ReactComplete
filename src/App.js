@@ -1,7 +1,9 @@
 import { useState } from 'react';
 // import ExpensesFilter from './components/expenses/ExpenseFilter';
 import ExpenseList from './components/expenses/ExpenseList';
-import NewExpense from './components/NewExpense/NewExpense';
+import NewExpense from './components/new-expense/NewExpense';
+
+import './App.css';
 
 function rand(min=0, upperBound){
   return min + Math.floor(Math.random()*upperBound)
@@ -54,7 +56,7 @@ function App() {
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <h2 className="h2Title">Expense Tracker</h2>
       <NewExpense onAddExpense={onAddExpense} />
       <ExpenseList className="expense-list" expenseAry={expAry} />
     </div>

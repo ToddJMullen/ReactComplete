@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.h2Title{
+  text-align: center;
+  color: white;
+}
 
 .App-logo {
   height: 40vmin;
